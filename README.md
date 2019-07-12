@@ -37,7 +37,7 @@ Then you will need to change the way you launch Puppeteer but only in the action
 
 ```javascript
 browser = await puppeteer.launch({
-  executablePath: process.env.CI && "google-chrome-unstable", // CI is set in workflow
+  executablePath: process.env.PUPPETEER_EXEC_PATH, // set by docker container
   headless: false,
   ...
 });

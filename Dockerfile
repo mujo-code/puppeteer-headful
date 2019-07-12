@@ -21,12 +21,10 @@ RUN  apt-get update \
      && apt-get install -y google-chrome-unstable --no-install-recommends \
      && rm -rf /var/lib/apt/lists/*
 
-# When installing Puppeteer through npm, instruct it to not download Chromium.
-# Puppeteer will need to be launched with:
-#   browser.launch({ executablePath: 'google-chrome-unstable' })
-# This is done by default in @ianwalter/bff.
+
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+RUN export PUPPETEER_EXEC_PATH "google-chrome-unstable"
 
 # Startup xvfb to allow for Headfulness
 RUN Xvfb :99 -screen 0 1024x768x24
-ENV DISPLAY=:99
+RUN export DISPLAY=:99
