@@ -23,8 +23,8 @@ RUN  apt-get update \
 
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
-RUN export PUPPETEER_EXEC_PATH "google-chrome-unstable"
+ENV PUPPETEER_EXEC_PATH google-chrome-unstable
 
 # Startup xvfb to allow for Headfulness
 RUN Xvfb :99 -screen 0 1024x768x24
-RUN export DISPLAY=:99
+ENV DISPLAY :99.0
