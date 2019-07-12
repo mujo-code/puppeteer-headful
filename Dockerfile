@@ -2,8 +2,8 @@ FROM node:12.3.1
 
 LABEL "com.github.actions.name"="Puppeteer Headful"
 LABEL "com.github.actions.description"="A GitHub Action / Docker image for Puppeteer, the Headful Chrome Node API"
-LABEL "com.github.actions.icon"="globe"
-LABEL "com.github.actions.color"="green"
+LABEL "com.github.actions.icon"="chrome"
+LABEL "com.github.actions.color"="blue"
 
 LABEL "repository"="https://github.com/jcblw/puppeteer-headful"
 LABEL "homepage"="https://github.com/jcblw/puppeteer-headful"
@@ -26,3 +26,7 @@ RUN  apt-get update \
 #   browser.launch({ executablePath: 'google-chrome-unstable' })
 # This is done by default in @ianwalter/bff.
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+
+# Startup xvfb to allow for Headfulness
+RUN Xvfb :99 -screen 0 1024x768x24
+ENV DISPLAY=:99
