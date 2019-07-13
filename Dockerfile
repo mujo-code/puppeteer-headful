@@ -23,7 +23,8 @@ RUN  apt-get update \
 
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
-ENV PUPPETEER_EXEC_PATH google-chrome-unstable
 
-# Startup xvfb to allow for Headfulness
-CMD export DISPLAY=:99.0 && Xvfb :99 -screen 0 1024x768x24
+COPY README.md /
+
+COPY entrypoint.sh /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
