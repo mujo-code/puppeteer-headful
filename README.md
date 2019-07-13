@@ -8,7 +8,7 @@ This container is available to Github Action because there is some situations ( 
 
 ## Usage
 
-This installs Puppeteer ontop of a (NodeJS)[https://nodejs.org] container so you should have access to run node or (npm)[https://www.npmjs.com].
+This installs Puppeteer ontop of a (NodeJS)[https://nodejs.org] container so you have access to run (npm)[https://www.npmjs.com] scripts using args. For this hook we hyjack the entrypoint of the [Dockerfile](https://docs.docker.com/engine/reference/builder/) so we can startup [Xvfb](https://www.x.org/releases/X11R7.6/doc/man/man1/Xvfb.1.xhtml) before your testing starts.
 
 ```terraform
 
@@ -21,10 +21,9 @@ action "Install Dependencies" {
 }
 
 action "Test Code" {
-  needs = ["Install Dependencies"]
   uses = "jcblw/puppeteer-headful@master"
-  runs = "npm"
-  args = "test",
+  needs = "Install Dependencies"
+  args = ["test"], # npm test
   env = {
     CI = "true"
   }
