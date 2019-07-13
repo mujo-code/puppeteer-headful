@@ -30,9 +30,9 @@ action "Test Code" {
 }
 ```
 
-> Note: You will need to to Puppeteer not to download Chromium. By setting the env of your install task to PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = 'true' so it does not install conflicting version of Chromium.
+> Note: You will need to let Puppeteer know not to download Chromium. By setting the env of your install task to PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = 'true' so it does not install conflicting versions of Chromium.
 
-Then you will need to change the way you launch Puppeteer but only in the action.
+Then you will need to change the way you launch Puppeteer. We export out a nifty ENV variable `PUPPETEER_EXEC_PATH` that you set at your `executablePath`. This should be undefined locally so it should function perfectly fine locally and on the action.
 
 ```javascript
 browser = await puppeteer.launch({
