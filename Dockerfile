@@ -2,7 +2,7 @@ FROM node:12.3.1
 
 LABEL "com.github.actions.name"="Puppeteer Headful"
 LABEL "com.github.actions.description"="A GitHub Action / Docker image for Puppeteer, the Headful Chrome Node API"
-LABEL "com.github.actions.icon"="chrome"
+LABEL "com.github.actions.icon"="layout"
 LABEL "com.github.actions.color"="blue"
 
 LABEL "repository"="https://github.com/jcblw/puppeteer-headful"
