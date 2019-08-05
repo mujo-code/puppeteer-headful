@@ -23,7 +23,7 @@ action "Install Dependencies" {
 }
 
 action "Test Code" {
-  uses = "jcblw/puppeteer-headful@master"
+  uses = "mujo-code/puppeteer-headful@master"
   needs = "Install Dependencies"
   args = ["test"], # npm test
   env = {
