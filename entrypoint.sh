@@ -8,14 +8,13 @@ export DISPLAY=:99.0
 export PUPPETEER_EXEC_PATH="google-chrome-stable"
 
 # Run commands
-for cmd in "$@"; do
-    echo "Running '$cmd'..."
-    if npm "$cmd"; then
-        # no op
-        echo "Successfully ran '$cmd'"
-    else
-        exit_code=$?
-        echo "Failure running '$cmd', exited with $exit_code"
-        exit $exit_code
-    fi
-done
+cmd=$@
+echo "Running '$cmd'!"
+if $cmd; then
+    # no op
+    echo "Successfully ran '$cmd'"
+else
+    exit_code=$?
+    echo "Failure running '$cmd', exited with $exit_code"
+    exit $exit_code
+fi

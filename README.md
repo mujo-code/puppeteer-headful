@@ -32,7 +32,7 @@ jobs:
       env:
         CI: 'true'
       with:
-        args: test
+        args: npm test
 ```
 
 > Note: You will need to let Puppeteer know not to download Chromium. By setting the env of your install task to PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = 'true' so it does not install conflicting versions of Chromium.
