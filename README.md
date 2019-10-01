@@ -21,12 +21,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Install Dependencies
+    - name: 
       uses: actions/npm@master
       env:
-        PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: "true"
+        PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
       with:
         args: install
+    - name: Test Code
+      uses: mujo-code/puppeteer-headful@master
+      env:
+        CI: 'true'
+      with:
+        args: test
 ```
 
 > Note: You will need to let Puppeteer know not to download Chromium. By setting the env of your install task to PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = 'true' so it does not install conflicting versions of Chromium.
