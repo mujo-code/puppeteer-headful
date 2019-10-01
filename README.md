@@ -12,24 +12,21 @@ This container is available to Github Action because there is some situations ( 
 
 This installs Puppeteer ontop of a [NodeJS](https://nodejs.org) container so you have access to run [npm](https://www.npmjs.com) scripts using args. For this hook we hyjack the entrypoint of the [Dockerfile](https://docs.docker.com/engine/reference/builder/) so we can startup [Xvfb](https://www.x.org/releases/X11R7.6/doc/man/man1/Xvfb.1.xhtml) before your testing starts.
 
-```terraform
-
-action "Install Dependencies" {
-  uses = "actions/npm@master"
-  args = "install"
-  env = {
-    PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = "true"
-  }
-}
-
-action "Test Code" {
-  uses = "mujo-code/puppeteer-headful@master"
-  needs = "Install Dependencies"
-  args = ["test"], # npm test
-  env = {
-    CI = "true"
-  }
-}
+```yaml
+name: CI
+on: push
+jobs:
+  installDependencies:
+    name: Install Dependencies
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Install Dependencies
+      uses: actions/npm@master
+      env:
+        PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: "true"
+      with:
+        args: install
 ```
 
 > Note: You will need to let Puppeteer know not to download Chromium. By setting the env of your install task to PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = 'true' so it does not install conflicting versions of Chromium.
