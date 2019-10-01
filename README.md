@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: 
+    - name: Install Dependencies
       uses: actions/npm@master
       env:
         PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
