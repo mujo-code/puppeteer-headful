@@ -16,5 +16,10 @@ if $cmd; then
 else
     exit_code=$?
     echo "Failure running '$cmd', exited with $exit_code"
+    echo ''
+    echo 'BREAKING CHANGE !!!'
+    echo 'We introduced a breaking change with the args field.'
+    echo 'You might just need to change `args: test` to `args: npm test`.'
+    echo 'For more details check out https://github.com/mujo-code/puppeteer-headful/pull/9'
     exit $exit_code
 fi
