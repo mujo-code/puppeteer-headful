@@ -22,7 +22,7 @@ jobs:
     steps:
     - uses: actions/checkout@master
     - name: Install Dependencies
-      uses: actions/npm@master
+      uses: actions/setup-node@v1
       env:
         PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
       with:
