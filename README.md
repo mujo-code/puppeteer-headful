@@ -41,6 +41,7 @@ Then you will need to change the way you launch Puppeteer. We export out a nifty
 
 ```javascript
 browser = await puppeteer.launch({
+  args: ['--no-sandbox'],
   executablePath: process.env.PUPPETEER_EXEC_PATH, // set by docker container
   headless: false,
   ...
