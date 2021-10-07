@@ -20,15 +20,15 @@ jobs:
     name: Install Dependencies
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@Z
     - name: Install Dependencies
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@v2
       env:
         PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
       with:
         args: install
     - name: Test Code
-      uses: mujo-code/puppeteer-headful@master
+      uses: mujo-code/puppeteer-headful@v2
       env:
         CI: 'true'
       with:
