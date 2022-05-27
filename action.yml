@@ -1,0 +1,10 @@
+name: 'Puppeteer Headful'
+description: 'Runs headless puppeteer'
+inputs:
+  args:
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.args }}
