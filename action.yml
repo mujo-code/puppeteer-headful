@@ -1,10 +1,15 @@
-name: 'Puppeteer Headful'
-description: 'Runs headless puppeteer'
+name: "Puppeteer Headful"
+description: "A GitHub Action / Docker image for Puppeteer, the Headful Chrome Node API. This can be used to run automated test for Chrome extensions"
+author: "Jacob Lowe"
 inputs:
   args:
+    description: "A command to run inside the container normally this would be a npm script to start testing."
     required: true
+branding:
+  icon: "layout"
+  color: "blue"
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
+  using: "docker"
+  image: "Dockerfile"
   args:
     - ${{ inputs.args }}
