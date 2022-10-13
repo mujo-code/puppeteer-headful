@@ -1,5 +1,5 @@
 name: "Puppeteer Headful"
-description: "A GitHub Action / Docker image for Puppeteer, the Headful Chrome Node API. This can be used to run automated test for Chrome extensions"
+description: "A GitHub Action / Docker image for Puppeteer, the Headful Chrome Node API so you can test Chrome extensions"
 author: "Jacob Lowe"
 inputs:
   args:
