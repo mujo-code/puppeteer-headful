@@ -8,10 +8,6 @@
 
 This container is available to Github Action because there are some situations, mostly testing [Chrome Extensions](https://pptr.dev/#?product=Puppeteer&version=v1.18.1&show=api-working-with-chrome-extensions), where you can not run Puppeteer in headless mode.
 
-## Sponsors
-
-<a href="https://chrome.google.com/webstore/detail/muj%C5%8D-be-mindful-of-your-t/pdhdkakfpnlcbipchahefkoaiohkehao" target="_blank"><img src="https://getmujo.com/api/og?name=Puppeteer%20Headful" alt="Mujō - Be mindful with your time" width="400px"></a>
-
 ## Usage
 
 This action installs Puppeteer on top of a [NodeJS](https://nodejs.org) container, so you have access to run [npm](https://www.npmjs.com) scripts using args. For this hook, we hijack the entry point of the [Dockerfile](https://docs.docker.com/engine/reference/builder/), so we can start up [Xvfb](https://www.x.org/releases/X11R7.6/doc/man/man1/Xvfb.1.xhtml) before your testing starts.
