@@ -19,6 +19,17 @@ RUN  apt-get update \
      && apt-get install -y google-chrome-stable --no-install-recommends \
      && rm -rf /var/lib/apt/lists/*
 
+# Add user so we don't need --no-sandbox.
+RUN groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
+   && mkdir -p /home/pptruser/Downloads \
+   && mkdir -p /github/workspace \
+   && chown -R pptruser:pptruser /home/pptruser \
+   && chown -R pptruser:pptruser /github/workspace \
+   && chmod 755 /github/workspace
+
+# Run everything after as non-privileged user.
+USER pptruser
+
 
 ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
 
